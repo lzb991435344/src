@@ -34,20 +34,50 @@ class SHA1
 public:
 	SHA1();
 	virtual ~SHA1();
-	bool Encode2Hex(const char* Input_Data, char* Output_Code);
-	bool Encode2Ascii(const char* Input_Data, char* Output_Code);
+	bool Encode2Hex(const char* Data_Input, char* SHACode_Output);
+	bool Encode2Ascii(const char* Data_Input, char* SHACode_Output);
 protected:
 private:
-	unsigned int H[5];   
+	unsigned int H[0x05];
 	unsigned int Length_High;//high 高位的数据
 	unsigned int Length_Low;//low 低位的数据
 	unsigned char  Message_Block[0x40]; //64
-	unsigned int Message_Block_Index;
+	unsigned int Message_Block_Index;//消息块的索引
 private:
-	SHA1Init();
-	void AddDataLen(int nDataLen);
+	/**
+	@commmon 初始化
+	@param 
+	@return void
+	*/
+	void SHA1Init();
+
+	/**
+	@commmon 增加数据的长度
+	@param int nDataLen:要增加的长度
+	@return void
+	*/
+	void AddDataLen(int DataLen);
+
+	/**
+	@commmon 打包数据
+	@param int nDataLen:要增加的长度
+	@return void
+	*/
 	void PadMessage();
+
+	/**
+	@commmon 处理消息块
+	@param 
+	@return void
+	*/
 	void ProcessMessageBlock();
+
+	/**
+	@commmon 循环移位
+	@param int bits:移位的位数
+	       unsigned word 移位的数据
+	@return void
+	*/
 	inline unsigned CircleShift(int bits, unsigned word);
 };
 #endif
