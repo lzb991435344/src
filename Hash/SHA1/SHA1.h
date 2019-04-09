@@ -41,7 +41,7 @@ private:
 	unsigned int H[5];   
 	unsigned int Length_High;//high 高位的数据
 	unsigned int Length_Low;//low 低位的数据
-	unsigned char  Messag_Block[0x40]; //64
+	unsigned char  Message_Block[0x40]; //64
 	unsigned int Message_Block_Index;
 private:
 	SHA1Init();
