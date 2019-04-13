@@ -30,6 +30,7 @@ typedef cxx::function<void(int priority, const char* file, uint32_t line,
 
 class RollUtil;
 
+//单例模式实现日志
 class Log {
 protected:
     Log();
