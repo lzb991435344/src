@@ -76,12 +76,13 @@ bool SHA1::Encode2Ascii(const char* Data_Input, char* SHACode_Output) {
 		}
 	}
 	//得到的编码的长度是20个字节的，分5个int来存
-	for (int i = 0; i < 5; i++ ) {
+	for (int i = 0; i < 5; i++) {
 		memcpy(SHACode_Output + i * 4 + 0, (char*)&H[i] + 3, 1);
 		memcpy(SHACode_Output + i * 4 + 1, (char*)&H[i] + 2, 1);
 		memcpy(SHACode_Output + i * 4 + 2, (char*)&H[i] + 1, 1);
 		memcpy(SHACode_Output + i * 4 + 3, (char*)&H[i] + 0, 1);
 	}
+	//0~3,4~7,8~15,16~19
 	return true;
 }
 
@@ -205,6 +206,8 @@ void SHA1::PadMessage() {
 unsigned SHA1::CircleShift(int bits, unsigned word) {
 	return ((word << bits) & 0xFFFFFFFF) | ((word & 0xFFFFFFFF) >>(32 - bits));
 }
+
+//for test
 int main(int argc, char* argv[])
 {
 	getchar();

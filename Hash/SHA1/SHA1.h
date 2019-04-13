@@ -5,6 +5,14 @@
 #include <stdio.h>
 #include <string.h>
 
+/**SHA1
+*   安全哈希算法（Secure Hash Algorithm）主要适用于数字签名标准 
+*（Digital Signature Standard DSS）里面定义的数字签名算法
+*（Digital Signature Algorithm DSA）。对于长度小于2^64位的消息，
+*SHA1会产生一个160位的消息摘要。当接收到消息的时候，这个消息摘要
+*可以用来验证数据的完整性。
+*
+*/
 /**
 *	usage    :    char SHABuffer[41];
 *                    SHA1 SHA;
@@ -38,7 +46,7 @@ public:
 	bool Encode2Ascii(const char* Data_Input, char* SHACode_Output);
 protected:
 private:
-	unsigned int H[0x05];
+	unsigned int H[0x05];//20个字节
 	unsigned int Length_High;//high 高位的数据
 	unsigned int Length_Low;//low 低位的数据
 	unsigned char  Message_Block[0x40]; //64
